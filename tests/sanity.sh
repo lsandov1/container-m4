@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 echo "Running Sanity"
 echo "Distro / Kernel info: "

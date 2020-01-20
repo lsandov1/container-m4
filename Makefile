@@ -2,7 +2,7 @@
 
 TEMPLATES_DIR=templates
 DISTRO=ubuntu
-
+TEST=sanity.sh
 all: helloworld stack
 
 helloworld:
@@ -16,8 +16,7 @@ stack/clearlinux stack/ubuntu:
 test:
 	m4 -I $(TEMPLATES_DIR) stack/$(DISTRO)_functest/Dockerfile.m4 | tee stack/$(DISTRO)_functest/Dockerfile
 	docker build -t stacks_$(DISTRO):test stack/$(DISTRO)_functest/
-	docker run --rm -v $(PWD)/tests:/tests stacks_$(DISTRO):test bash /tests/sanity.sh
-	docker run --rm -v $(PWD)/tests:/tests stacks_$(DISTRO):test python3 /tests/numpy_test.py
+	docker run --rm -v $(PWD)/tests:/tests stacks_$(DISTRO):test /tests/$(TEST)
 
 test_debug:
 	m4 -I $(TEMPLATES_DIR) stack/$(DISTRO)_functest/Dockerfile.m4 | tee stack/$(DISTRO)_functest/Dockerfile
