@@ -26,6 +26,12 @@ TEST:	variable to set TEST to execute. Tests cases can live under tests/
 make bench DISTRO=ubuntu
 ```
 
+or
+
+```bash
+make bench DISTRO=clearlinux
+```
+
 The benchmark tests can live under tests/
 The phoronix-test-suite framework are installed on the image if required
 
