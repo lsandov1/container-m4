@@ -42,7 +42,9 @@ package:
 	docker run --privileged -it \
 		-v $(PWD)/rpmbuild:/rpmbuild \
 		-e MOCK_CONFIG=$(MOCK_CONFIG) \
-		-e SOURCE_RPM=/rpmbuild/$(SRPM) \
+		-e SOURCE_RPM=$(SRPM) \
+		-e SOURCES=$(SOURCES) \
+		-e SPEC_FILE=$(SPEC_FILE) \
 		stacks_centos:mock /bin/bash
 clean:
 	rm -rf helloworld/Dockerfile
