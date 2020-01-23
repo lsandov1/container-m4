@@ -4,10 +4,7 @@ TEMPLATES_DIR=templates
 DISTRO=ubuntu
 MOCK_CONFIG ?= "epel-6-i386"
 TEST=sanity.sh
-all: helloworld stack
-
-helloworld:
-	m4 -I $(TEMPLATES_DIR) $@/Dockerfile.m4 | tee $@/Dockerfile
+all: stack
 
 stack: stack/clearlinux stack/ubuntu
 
