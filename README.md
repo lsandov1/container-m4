@@ -69,3 +69,39 @@ discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
 
+## Build custom packages
+
+This project also gives the capability to build custom pkgs. These packages
+could be optimized for performance. In any case, the approach to follow is:
+
+* For CentOS providing the SRPM
+
+```
+make package DISTRO=centos SRPM=git-2.3.0-1.el7.centos.src.rpm
+```
+
+The SRPM should be under rpmbuild, in this example the
+[git-srpm](https://copr-be.cloud.fedoraproject.org/results/snoopotic/git-rpms/epel-7-x86_64/git-2.3.0-1.el6/git-2.3.0-1.el7.centos.src.rpm)
+is used
+
+This will prompt the recent image generated with mock ready to run, from there the user can execute the script:
+
+```
+[root@816581bfb8eb /]# ./build-rpm.sh
+```
+
+This will create the RPMs under:
+
+```
+./rpmbuild/output/
+```
+
+Mock will resolve all the build dependencies and keep a cache for future builds
+
+Variables that user can adapt:
+
+```
+MOCK_CONFIG="epel-6-i386"
+```
+Mock config specifies the repositories from where to get the build dependencies
+
